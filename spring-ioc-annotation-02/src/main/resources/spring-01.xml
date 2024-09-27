@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--学习注解方式的使用-->
+
+<!--注解方式IoC只是标记哪些类要被Spring管理-->
+<!--最终，我们还需要XML方式或者后面讲解Java配置类方式指定注解生效的包-->
+
+<!-- 配置自动扫描的包 -->
+<!-- 1.包要精准,提高性能!
+     2.会扫描指定的包和子包内容
+     3.可以使用多个包 例如: com.atguigu.controller,com.atguigu.service......
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 情况一（最常用）：基本扫描配置 -->
+    <context:component-scan base-package="com.atguigu.ioc_01"/>
+
+
+    <!-- 情况二：指定不扫描的组件 -->
+<!--    <context:component-scan base-package="com.atguigu.ioc_01">-->
+        <!-- context:exclude-filter标签：指定排除规则 -->
+        <!-- type属性：指定根据什么来进行排除，annotation取值表示根据注解来排除 -->
+        <!-- expression属性：指定排除规则的表达式，对于注解来说指定全类名即可 -->
+<!--        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+
+    <!-- 情况三：仅扫描指定的组件 -->
+    <!-- 仅扫描 = 关闭默认规则 + 追加规则 -->
+    <!-- use-default-filters属性：取值false表示关闭默认扫描规则 -->
+<!--    <context:component-scan base-package="com.atguigu.ioc.ioc_01" use-default-filters="false">-->
+        <!-- context:include-filter标签：指定在原有扫描规则的基础上追加的规则 -->
+<!--        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--    </context:component-scan>-->
+</beans>

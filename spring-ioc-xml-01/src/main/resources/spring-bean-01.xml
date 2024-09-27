@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--学习xml配置方法-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 不同的实例化对象的方式，对应着不同的xml配置格式 -->
+
+    <!-- 1.无参构造方法 创建bean -->
+    <bean id="happyComponent" class="com.atguigu.ioc_01.HappyComponent"/>
+
+    <!-- 2.静态工厂方法 创建bean -->
+    <bean id="clientService"
+          class="com.atguigu.ioc_01.ClientService"
+          factory-method="createInstance"/>
+
+    <!-- 3.实例工厂方法 创建bean -->
+    <!-- 3.1 将工厂类进行ioc配置 -->
+    <bean id="DefaultServiceLocator" class="com.atguigu.ioc_01.DefaultServiceLocator">
+    </bean>
+
+    <!-- 3.2 根据工厂对象的实例工厂方法进行实例化组件对象 -->
+    <bean id="clientService2"
+          factory-bean="DefaultServiceLocator"
+          factory-method="createClientServiceInstance"/>
+</beans>
