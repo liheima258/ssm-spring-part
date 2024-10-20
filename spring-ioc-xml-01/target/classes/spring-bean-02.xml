@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- di的两种配置-->
+<!-- 学习di的两种配置-->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -22,7 +22,7 @@
 
     <!-- 场景2: 多参数，可以按照相应构造函数的名称注入数据 -->
 <!--    <bean id="userService" class="com.atguigu.ioc_02.UserService">-->
-<!--        &lt;!&ndash; value直接注入基本类型值 &ndash;&gt;-->
+        <!-- value直接注入基本类型值 -->
 <!--        <constructor-arg name="name" value="小李"/>-->
 <!--        <constructor-arg name="userDao" ref="userDao"/>-->
 <!--        <constructor-arg name="age" value="18"/>-->
@@ -33,7 +33,7 @@
                index从0开始 构造函数(0,1,2....)
     -->
 <!--    <bean id="userService" class="com.atguigu.ioc_02.UserService">-->
-<!--        &lt;!&ndash; value直接注入基本类型值 &ndash;&gt;-->
+        <!-- value直接注入基本类型值 -->
 <!--        <constructor-arg index="1" value="小李"/>-->
 <!--        <constructor-arg index="2" ref="userDao"/>-->
 <!--        <constructor-arg index="0" value="18"/>-->
@@ -41,7 +41,7 @@
 
     <!-- 基于Setter方法依赖注入 -->
     <!-- 被引用类bean声明 -->
-    <bean id="movieFinder" class="com.atguigu.ioc_02.MovieFinder" scope="prototype" init-method="init"/>
+    <bean id="movieFinder" class="com.atguigu.ioc_02.MovieFinder"/>
     <bean id="simpleMovieLister" class="com.atguigu.ioc_02.SimpleMovieLister">
         <!-- setter方法，注入movieFinder对象的标识id
              name = 方法名【去掉set和开头字母大写的方法名】  ref = 引用bean的id值
